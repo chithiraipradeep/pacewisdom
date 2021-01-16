@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Employeee Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="margin:0 auto">
+  <img [src]="employee.employee_image" onerror="this.src='assets/dummy.jpg'"
+  class="center">
+</div>
+<br/>
+<table id="employee">
+  <tr>
+    <td style="font-weight: 500;">Name</td>
+    <td>{{employee.employee_name}}</td>
+  </tr>
+  <tr>
+    <td style="font-weight: 500;">Gender</td>
+    <td>{{employee.employee_gender}}</td>
+  </tr>
+  <tr>
+    <td style="font-weight: 500;">Email</td>
+    <td>{{employee.employee_email}}</td>
+  </tr>
+  <tr>
+    <td style="font-weight: 500;">Phone </td>
+    <td>{{employee.employee_phoneno}}</td>
+  </tr>
+  <tr>
+    <td style="font-weight: 500;">Address</td>
+    <td>{{employee.employee_address}}</td>
+  </tr>
+  
+</table>
+
+
+</ion-content>

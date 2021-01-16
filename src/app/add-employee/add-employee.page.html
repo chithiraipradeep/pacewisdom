@@ -1,0 +1,142 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Employee</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+      <ion-row>
+        <ion-col size="4">
+          <img [src]="imageSrc" onerror="this.src='assets/dummy.jpg'"
+            style="border-radius: 50%;height:90px;width:90px;object-fit: cover;">
+        </ion-col>
+        <ion-col size="8">
+          <span style="color:#ED5901;font-size: 15px;position: relative;top:15px"> Upload your image</span><br>
+          <input formControlName="file" id="file" type="file" style="border:none;position: relative;top:26px"
+            (change)="onFileChange($event)" required />
+        </ion-col>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.file">
+            <div class="error-message"
+              *ngIf="validations_form.get('file').hasError(validation.type) && (validations_form.get('file').dirty || validations_form.get('file').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon>
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item lines="none">
+            <mat-form-field style="width: 100%;" appearance="outline">
+              <mat-label>Name</mat-label>
+              <input matInput type="text" formControlName="employee_name" required>
+              <mat-hint>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.employee_name">
+                    <div class="error-message"
+                      *ngIf="validations_form.get('employee_name').hasError(validation.type) && (validations_form.get('employee_name').dirty || validations_form.get('employee_name').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </mat-hint>
+            </mat-form-field>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-item lines="none">
+            <mat-form-field style="width: 100%;" appearance="outline">
+              <mat-label>Gender</mat-label>
+              <select matNativeControl formControlName="employee_gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+              <mat-hint>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.employee_gender">
+                    <div class="error-message"
+                      *ngIf="validations_form.get('employee_gender').hasError(validation.type) && (validations_form.get('employee_gender').dirty || validations_form.get('employee_gender').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </mat-hint>
+            </mat-form-field>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-item lines="none">
+            <mat-form-field style="width: 100%;" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="employee_email" required>
+              <mat-hint>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.employee_email">
+                    <div class="error-message"
+                      *ngIf="validations_form.get('employee_email').hasError(validation.type) && (validations_form.get('employee_email').dirty || validations_form.get('employee_email').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </mat-hint>
+            </mat-form-field>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item lines="none">
+            <mat-form-field style="width: 100%;" appearance="outline">
+              <mat-label>Phone</mat-label>
+              <input matInput placeholder="Mobile No" type="tel" maxlength="10" formControlName="employee_phoneno"
+                required>
+              <mat-hint>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.employee_phoneno">
+                    <div class="error-message"
+                      *ngIf="validations_form.get('employee_phoneno').hasError(validation.type) && (validations_form.get('employee_phoneno').dirty || validations_form.get('employee_phoneno').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </mat-hint>
+            </mat-form-field>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item lines="none">
+            <mat-form-field style="width: 100%;" appearance="outline">
+              <mat-label>Address</mat-label>
+              <textarea matInput type="text" formControlName="employee_address" required (click)="getaddress()"></textarea>
+              <mat-hint>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.employee_address">
+                    <div class="error-message"
+                      *ngIf="validations_form.get('employee_address').hasError(validation.type) && (validations_form.get('employee_address').dirty || validations_form.get('employee_address').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </mat-hint>
+            </mat-form-field>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-col size="12" text-center class="padding-top" class="submitbutton">
+        <ion-button type="submit" color="primary" [disabled]="!validations_form.valid" style="width: 70%;height:60px">
+          Save Employee</ion-button>
+      </ion-col>
+    </form>
+  </ion-grid>
+</ion-content>

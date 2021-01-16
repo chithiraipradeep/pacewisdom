@@ -1,0 +1,27 @@
+.validation-errors {
+    color: red;
+}
+
+.submitbutton {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+ion-content {
+    --ion-background-color: #ffffff;
+}
+
+ion-item {
+    --ion-background-color: #fff;
+}
+
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #000;
+}
+/* Font color */
+::ng-deep.mat-input.mat-input-element {
+    color: #000;
+}

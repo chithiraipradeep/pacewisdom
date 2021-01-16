@@ -1,0 +1,30 @@
+<ion-content class="bg_color" fullscreen>
+  <div class="map-wrapper">
+    <div id="map_center">
+      <img src="assets/map-marker.png" width="30px" />
+    </div>
+    <div #maps id="maps"></div>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-list lines="none">
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label mode="md" position="floating">Address</ion-label>
+          <ion-textarea mode="md" rows="2" [(ngModel)]="address" name="address">
+          </ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+  <ion-row>
+    <ion-col size="6">
+      <ion-button size="small" shape="full" class="btn" type="submit" (click)="closemodal()">Cancel</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button size="small" shape="full" class="btn" (click)="saveAddress(this.address)">Save address
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>
